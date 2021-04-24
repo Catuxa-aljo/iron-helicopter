@@ -24,7 +24,7 @@ class Helicopter {
 
     this.weapon = new Weapon(this)
 
-    this._setListeners()
+   // this._setListeners()
   }
 
   draw() {
