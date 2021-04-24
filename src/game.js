@@ -26,8 +26,7 @@ class Game {
   }
 
   addObstacle() {
-    // TODO: add new Obstacle every 100 ticks
-
+    // TODO: add new Obstacle every 100 ticks!!
   }
 
   clear() {
