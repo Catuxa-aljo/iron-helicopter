@@ -97,4 +97,22 @@ class Helicopter {
     document.onkeydown = e => this.onKeyEvent(e.keyCode,true)
     document.onkeyup = e => this.onKeyEvent(e.keyCode,false)
   }
+
+  applyActions(){
+
+    if(!this.actions.up){
+      this.ay = -0.2
+    }
+    else if(this.actions.up){
+      this.ay = 0
+    }
+    else if(this.actions.left){
+      this.ax = -0.2
+    }
+    else if(this.action.right){
+      this.ax = 0.2
+    }
+
+
+  }
 }
