@@ -20,7 +20,8 @@ class Helicopter {
     this.actions = {
       right: false,
       left: false,
-      up: false     
+      up: false,
+      shoot: false
     }
 
     this.img = new Image()
@@ -60,17 +61,16 @@ class Helicopter {
     // TODO: move
     this.animate();
     this.applyActions();
+    this.weapon.move();
 
     this.vx += this.ax;
     this.vy += this.ay;
     this.vy += this.g;
     this.x += this.vx;
     this.y += this.vy;
-    
   }
 
   onKeyEvent(keyCode,action) {
-    console.log(this.actions) 
     switch (keyCode) {
       case LEFT:
         this.actions.left = action
@@ -84,6 +84,9 @@ class Helicopter {
         this.actions.up = action
         break;
 
+      case SPACE:
+        this.actions.shoot = action
+        break;
     }
   }
   
@@ -95,8 +98,6 @@ class Helicopter {
     if (this.img.frameIndex >= this.img.frames) {
       this.img.frameIndex = 0;
     }
-
-  
   }
 
   setListeners() {
@@ -113,6 +114,10 @@ class Helicopter {
       this.ax = 0.2
     } else {
       this.ax = 0
+    }
+
+    if (this.actions.shoot) {
+      this.weapon.shoot();
     }
   }
 

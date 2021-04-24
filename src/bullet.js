@@ -16,6 +16,7 @@ class Bullet {
       0,
       2 * Math.PI
     )
+    this.ctx.fill();
     // TODO: draw circle
     this.ctx.closePath()
   }
@@ -26,7 +27,7 @@ class Bullet {
   }
 
   isVisible() {
-   
+
     return this.x < this.ctx.canvas.width
 
     // TODO: is inside canvas?
