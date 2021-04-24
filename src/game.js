@@ -7,6 +7,7 @@ class Game {
     this.bg = new Background(ctx)
     this.helicopter = new Helicopter(ctx)
     this.obstacles = []
+    this.score = new Score(ctx)
   }
 
   start() {
@@ -48,7 +49,7 @@ class Game {
     this.bg.draw()
     this.helicopter.draw()
     this.obstacles.forEach( ob => ob.draw())
-    
+    this.score.draw()
 
     // TODO: draw everything
   }
