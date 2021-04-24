@@ -16,15 +16,19 @@ class Game {
       this.move();
       this.draw()
       this.addObstacle()
+      console.log(this.obstacles)
       if (this.tick++ > 10000) {
         this.tick = 0;
       }
       this.checkCollisions()
     }, 1000 /60)
+
+    
   }
 
   clearObstacles() {
     // TODO: filter only visible obstacles (call o.isVisible())
+    this.obstacles = this.obstacles.filter(ob => ob.isVisible())
   }
 
   addObstacle() {
@@ -36,7 +40,8 @@ class Game {
   }
 
   clear() {
-    this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height)
+    this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
+    this.clearObstacles()
   }
 
   draw() {
@@ -57,9 +62,12 @@ class Game {
 
   checkCollisions() {
     const collision = this.obstacles.some( ob => ob.collide(this.helicopter));
-    if (collision) {
+    if (collision || this.helicopter.isFloor()) {
       this.gameOver();
+      
     }
+
+  
     // TODO: check helicopter on floor?
     // TODO: iterate obstacles. check colX and colY
   }
