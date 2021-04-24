@@ -28,13 +28,13 @@ class Helicopter {
   }
 
   draw() {
+
     this.ctx.drawImage(
       this.img, 
       0,
-      this.img.height,
-      this.w,
-      this.h,
-
+      this.img.frameIndex * this.img.height / this.img.frames,
+      this.img.width,
+      this.img.height / this.img.frames,
       this.x,
       this.y,
       this.w,
@@ -51,9 +51,20 @@ class Helicopter {
 
   move() {
     // TODO: move
+    this.animate();
   }
 
   onKeyEvent(event) {
     // TODO
+  }
+  
+  animate() {
+    if (this.tick++ >= 5) {
+      this.tick = 0;
+      this.img.frameIndex++;
+    }
+    if (this.img.frameIndex >= this.img.frames) {
+      this.img.frameIndex = 0;
+    }
   }
 }

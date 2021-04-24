@@ -43,6 +43,7 @@ class Game {
   move() {
     // TODO: move everything
     this.bg.move()
+    this.helicopter.move()
   }
 
   checkCollisions() {
