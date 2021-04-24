@@ -36,7 +36,9 @@ class Background {
   move() {
 
     this.x += this.vx;
-    if()
+    if (this.x + this.w <= 0){
+      this.x = 0
+    }
     // TODO: move background
     // TODO: restart position if out of canvas
   }

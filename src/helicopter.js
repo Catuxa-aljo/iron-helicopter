@@ -28,6 +28,18 @@ class Helicopter {
   }
 
   draw() {
+    this.ctx.drawImage(
+      this.img, 
+      0,
+      this.img.height,
+      this.w,
+      this.h,
+
+      this.x,
+      this.y,
+      this.w,
+      this.h,
+    )
     // TODO: draw helicopter image
 
     this.weapon.draw()

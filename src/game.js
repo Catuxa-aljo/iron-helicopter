@@ -35,6 +35,7 @@ class Game {
 
   draw() {
     this.bg.draw()
+    this.helicopter.draw()
 
     // TODO: draw everything
   }
