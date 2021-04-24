@@ -16,6 +16,12 @@ class Helicopter {
     this.ay = 0
     this.ax = 0
     this.g = 0.1
+    
+    this.actions = {
+      right: false,
+      left: false,
+      up: false     
+    }
 
     this.img = new Image()
     this.img.src = "https://2.bp.blogspot.com/-P6ZbLE-rnFM/WPTQh65UtMI/AAAAAAAABF8/9iYl-cIUEtIhj2JDTixyqZNeBn183AdmQCLcB/s1600/helicopter-spritesheet.png"
@@ -24,7 +30,8 @@ class Helicopter {
 
     this.weapon = new Weapon(this)
 
-   // this._setListeners()
+    this.setListeners()
+
   }
 
   draw() {
@@ -51,11 +58,27 @@ class Helicopter {
 
   move() {
     // TODO: move
+    
+    this.x += this.vx
     this.animate();
   }
 
-  onKeyEvent(event) {
-    // TODO
+  onKeyEvent(keyCode,action) {
+    console.log(this.actions) 
+    switch (keyCode) {
+      case LEFT:
+        this.actions.left = action
+        break;
+          
+      case RIGHT:
+        this.actions.right = action
+        break;
+
+      case UP:
+        this.actions.up = action
+        break;
+
+    }
   }
   
   animate() {
@@ -66,5 +89,12 @@ class Helicopter {
     if (this.img.frameIndex >= this.img.frames) {
       this.img.frameIndex = 0;
     }
+
+  
+  }
+
+  setListeners() {
+    document.onkeydown = e => this.onKeyEvent(e.keyCode,true)
+    document.onkeyup = e => this.onKeyEvent(e.keyCode,false)
   }
 }
