@@ -58,9 +58,15 @@ class Helicopter {
 
   move() {
     // TODO: move
-    
-    this.x += this.vx
     this.animate();
+    this.applyActions();
+
+    this.vx += this.ax;
+    this.vy += this.ay;
+    this.vy += this.g;
+    this.x += this.vx;
+    this.y += this.vy;
+    
   }
 
   onKeyEvent(keyCode,action) {
@@ -99,20 +105,15 @@ class Helicopter {
   }
 
   applyActions(){
+    this.ay = this.actions.up ? -0.2 : 0
 
-    if(!this.actions.up){
-      this.ay = -0.2
-    }
-    else if(this.actions.up){
-      this.ay = 0
-    }
-    else if(this.actions.left){
+    if (this.actions.left) {
       this.ax = -0.2
-    }
-    else if(this.action.right){
+    } else if (this.actions.right) {
       this.ax = 0.2
+    } else {
+      this.ax = 0
     }
-
-
   }
+
 }

@@ -19,7 +19,9 @@ class Weapon {
   }
 
   draw() {
+    this.clearBullets();
     this.bullets.forEach(b => b.draw())
+
   }
 
   move() {
